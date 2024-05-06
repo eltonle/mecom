@@ -27,9 +27,9 @@
     <link rel="stylesheet" href="{{asset('adminbackend/assets/css/header-colors.css')}}" />
     <!-- datatables -->
     <link href="{{asset('adminbackend/assets/plugins/datatable/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet" />
-    
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Admin Dashboard</title>
 </head>
@@ -38,7 +38,7 @@
     <!--wrapper-->
     <div class="wrapper">
         <!--sidebar wrapper -->
-         @include('admin.body.sidebar')
+        @include('admin.body.sidebar')
         <!--end sidebar wrapper -->
         <!--start header -->
         @include('admin.body.header')
@@ -57,7 +57,7 @@
     </div>
     <!--end wrapper-->
     <!--start switcher-->
-    
+
     <!--end switcher-->
     <!-- Bootstrap JS -->
     <script src="{{asset('adminbackend/assets/js/bootstrap.bundle.min.js')}}"></script>
@@ -84,52 +84,52 @@
     <!--datatables JS-->
     <script src="{{asset('adminbackend/assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
     <script>
-		$(document).ready(function() {
-			$('#example').DataTable();
-		  } );
-	</script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        });
+    </script>
 
 
     <!--app JS-->
     <script src="{{asset('adminbackend/assets/js/app.js')}}"></script>
-    
- 
-     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    
-    <script >
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script>
         @if(Session::has('message'))
         var type = "{{ Session::get('alert-type','info') }}"
-        switch(type){
+        switch (type) {
             case 'info':
-            toastr.info(" {{ Session::get('message') }} ");
-            break;
-        
+                toastr.info(" {{ Session::get('message') }} ");
+                break;
+
             case 'success':
-            toastr.success(" {{ Session::get('message') }} ");
-            break;
-        
+                toastr.success(" {{ Session::get('message') }} ");
+                break;
+
             case 'warning':
-            toastr.warning(" {{ Session::get('message') }} ");
-            break;
-        
+                toastr.warning(" {{ Session::get('message') }} ");
+                break;
+
             case 'error':
-            toastr.error(" {{ Session::get('message') }} ");
-            break; 
+                toastr.error(" {{ Session::get('message') }} ");
+                break;
         }
-        @endif 
+        @endif
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="{{ asset('adminbackend/assets/js/code.js') }}"></script>
     <script src="{{ asset('adminbackend/assets/plugins/input-tags/js/tagsinput.js') }}"></script>
 
-<script src='https://cdn.tiny.cloud/1/vdqx2klew412up5bcbpwivg1th6nrh3murc6maz8bukgos4v/tinymce/5/tinymce.min.js' referrerpolicy="origin">
-</script>
+    <script src='https://cdn.tiny.cloud/1/vdqx2klew412up5bcbpwivg1th6nrh3murc6maz8bukgos4v/tinymce/5/tinymce.min.js' referrerpolicy="origin">
+    </script>
 
-<script>
-   tinymce.init({
-     selector: '#mytextarea'
-   });
-</script>
+    <script>
+        tinymce.init({
+            selector: '#mytextarea'
+        });
+    </script>
 </body>
 
 </html>
