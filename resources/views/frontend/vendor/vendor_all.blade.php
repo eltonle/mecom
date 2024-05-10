@@ -13,7 +13,7 @@
 <div class="page-content pt-50">
     <div class="container">
         <div class="archive-header-2 text-center">
-            <h1 class="display-2 mb-50">Vendors List</h1>
+            <h1 class="display-2 mb-30">Vendors List</h1>
             <div class="row">
                 <div class="col-lg-5 mx-auto">
                     <div class="sidebar-widget-2 widget_search mb-50">
@@ -27,7 +27,7 @@
                 </div>
             </div>
         </div>
-        <div class="row mb-50">
+        <div class="row mb-30">
             <div class="col-12 col-lg-8 mx-auto">
                 <div class="shop-product-fillter">
                     <div class="totall-product">

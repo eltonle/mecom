@@ -18,7 +18,7 @@ $categories = App\Models\Category::orderBy('category_name','ASC')->get();
                     <figure class="img-hover-scale overflow-hidden">
                         <a href="shop-grid-right.html"><img src="{{ asset($category->category_image ) }}" alt="" /></a>
                     </figure>
-                    <h6><a href="shop-grid-right.html">Cake & Milk</a></h6>
+                    <h6><a href="{{ url('product/category/'.$category->id.'/'.$category->category_slug) }}">{{$category->category_name}}</a></h6>
                     @php
                     $products = App\Models\Product::where('category_id',$category->id)->get();
                     @endphp

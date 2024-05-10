@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', [IndexController::class, 'Index']);
+Route::get('/', [IndexController::class, 'Index'])->name('home');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [UserController::class, 'UserDashboard'])->name('dashboard');
@@ -187,3 +187,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetails']);
 Route::get('/vendor/details/{id}', [IndexController::class, 'VendorDetails'])->name('vendor.details');
 Route::get('/vendor/all', [IndexController::class, 'VendorAll'])->name('vendor.all');
+Route::get('/product/category/{id}/{slug}', [IndexController::class, 'CatWiseProduct']);
+Route::get('/product/subcategory/{id}/{slug}', [IndexController::class, 'SubCatWiseProduct']);
+
+// Product View Modal With Ajax
+
+Route::get('/product/view/modal/{id}', [IndexController::class, 'ProductViewAjax']);
