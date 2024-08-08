@@ -6,13 +6,13 @@
 <div class="page-content">
 	<!--breadcrumb-->
 	<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-		<div class="breadcrumb-title pe-3">Add SubCategory</div>
+		<div class="breadcrumb-title pe-3">Add Coupon</div>
 		<div class="ps-3">
 			<nav aria-label="breadcrumb">
 				<ol class="breadcrumb mb-0 p-0">
 					<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
 					</li>
-					<li class="breadcrumb-item active" aria-current="page">Add SubCategory</li>
+					<li class="breadcrumb-item active" aria-current="page">Add Coupon</li>
 				</ol>
 			</nav>
 		</div>
@@ -28,37 +28,36 @@
 				<div class="col-lg-12">
 					<div class="card">
 						<div class="card-body">
-							<form id="myForm" action="{{ route('store.subcategory') }}" method="post" enctype="multipart/form-data">
+							<form id="myForm" action="{{ route('store.coupon') }}" method="post" enctype="multipart/form-data">
 								@csrf
-
-
-								<div class="row mb-3">
-									<div class="col-sm-3">
-										<h6 class="mb-0">Category Name</h6>
-									</div>
-									<div class="form-group col-sm-9 text-secondary">
-										<select name="category_id" class="form-select mb-3" aria-label="Default select example">
-											<option value="">Open this select menu</option>
-
-											@foreach($categories as $category)
-											<option value="{{ $category->id }}">{{ $category->category_name }}</option>
-											@endforeach
-
-										</select>
-									</div>
-								</div>
-
+							
 
 								<div class="row mb-3">
 									<div class="col-sm-3">
-										<h6 class="mb-0">SubCategory Name</h6>
+										<h6 class="mb-0">Coupon Name</h6>
 									</div>
 									<div class="form-group col-sm-9 text-secondary">
-										<input type="text" name="subcategory_name" class="form-control" />
+										<input type="text" name="coupon_name" class="form-control" />
 									</div>
 								</div>
 
+								<div class="row mb-3">
+									<div class="col-sm-3">
+										<h6 class="mb-0">Coupon Discount(%)</h6>
+									</div>
+									<div class="form-group col-sm-9 text-secondary">
+										<input type="text" name="coupon_discount" class="form-control" />
+									</div>
+								</div>
 
+								<div class="row mb-3">
+									<div class="col-sm-3">
+										<h6 class="mb-0">Coupon Validite date</h6>
+									</div>
+									<div class="form-group col-sm-9 text-secondary">
+										<input type="date" name="coupon_validity" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" class="form-control" />
+									</div>
+								</div>							
 
 
 								<div class="row">
@@ -82,20 +81,20 @@
 	$(document).ready(function() {
 		$('#myForm').validate({
 			rules: {
-				subcategory_name: {
-					required: true,
-				},
-				category_id: {
-					required: true,
-				},
+				coupon_name: {
+                    required : true,
+                },
+                 coupon_discount: {
+                    required : true,
+                }, 
 			},
 			messages: {
-				subcategory_name: {
-					required: 'Please Enter SubCategory Name'
-				},
-				category_id: {
-					required: 'Please Select Category Name'
-				}
+                coupon_name: {
+                    required : 'Please Enter Coupon Name',
+                },
+                coupon_discount: {
+                    required : 'Please Enter Coupon Discount',
+                },
 			},
 			errorElement: 'span',
 			errorPlacement: function(error, element) {
