@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\CompareControler;
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\UserController;
@@ -264,6 +265,18 @@ Route::post('/add-to-wishlist/{product_id}', [WishlistController::class, 'AddToW
 /// Add to Compare 
 Route::post('/add-to-compare/{product_id}', [CompareControler::class, 'AddToCompare']);
 
+
+
+// Cart All Route 
+Route::controller(CartController::class)->group(function () {
+    Route::get('/mycart', 'MyCart')->name('mycart');
+    Route::get('/get-cart-product', 'GetCartProduct');
+    Route::get('/cart-remove/{rowId}', 'CartRemove');
+    Route::get('/cart-decrement/{rowId}', 'CartDecrement');
+    Route::get('/cart-increment/{rowId}', 'CartIncrement');
+});
+
+
 /// User All Route
 Route::middleware(['auth', 'role:user'])->group(function () {
 
@@ -283,14 +296,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         Route::get('/compare-remove/{id}', 'CompareRemove');
     });
 
-    // Cart All Route 
-    Route::controller(CartController::class)->group(function () {
-        Route::get('/mycart', 'MyCart')->name('mycart');
-        Route::get('/get-cart-product', 'GetCartProduct');
-        Route::get('/cart-remove/{rowId}', 'CartRemove');
-        Route::get('/cart-decrement/{rowId}', 'CartDecrement');
-        Route::get('/cart-increment/{rowId}', 'CartIncrement');
-    });
+
 
     /// Frontend Coupon Option
     Route::post('/coupon-apply', [CartController::class, 'CouponApply']);
@@ -298,4 +304,14 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/coupon-calculation', [CartController::class, 'CouponCalculation']);
 
     Route::get('/coupon-remove', [CartController::class, 'CouponRemove']);
+
+    Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checkout');
+
+
+    // Wishlist All Route 
+    Route::controller(CheckoutController::class)->group(function () {
+        Route::get('/district-get/ajax/{division_id}', 'DistrictGetAjax');
+        Route::get('/state-get/ajax/{district_id}', 'StateGetAjax');
+        Route::post('/checkout/store', 'CheckoutStore')->name('checkout.store');
+    });
 });

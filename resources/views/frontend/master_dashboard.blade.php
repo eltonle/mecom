@@ -17,6 +17,8 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{asset('frontend/assets/css/plugins/animate.min.css')}}" />
     <link rel="stylesheet" href="{{asset('frontend/assets/css/main.css?v=5.3')}}" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 </head>
 
 <body>
@@ -76,6 +78,28 @@
     <script src="{{asset('frontend/assets/js/main.js?v=5.3')}}"></script>
     <script src="{{asset('frontend/assets/js/shop.js?v=5.3')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script>
+     @if(Session::has('message'))
+     var type = "{{ Session::get('alert-type','info') }}"
+     switch(type){
+        case 'info':
+        toastr.info(" {{ Session::get('message') }} ");
+        break;
+        case 'success':
+        toastr.success(" {{ Session::get('message') }} ");
+        break;
+        case 'warning':
+        toastr.warning(" {{ Session::get('message') }} ");
+        break;
+        case 'error':
+        toastr.error(" {{ Session::get('message') }} ");
+        break; 
+     }
+     @endif 
+    </script>
 
     <script type="text/javascript">
         $.ajaxSetup({
@@ -660,7 +684,7 @@
 
 
         // Cart Remove Start 
-  function cartRemove(id){
+     function cartRemove(id){
             $.ajax({
                 type: "GET",
                 dataType: 'json',
@@ -696,7 +720,7 @@
                 }
             })
         }
-// Cart Remove End
+   // Cart Remove End
 
 // Cart Decrement Start
 function cartDecrement(rowId){
