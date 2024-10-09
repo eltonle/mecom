@@ -20,6 +20,7 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\VendorOrderController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Frontend\ShopController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\AllUserController;
 use App\Http\Controllers\User\CheckoutController;
@@ -467,6 +468,13 @@ Route::controller(IndexController::class)->group(function () {
 Route::controller(ReviewController::class)->group(function () {
 
     Route::post('/store/review', 'StoreReview')->name('store.review');
+});
+
+// Frontend Shop route
+Route::controller(ShopController::class)->group(function () {
+
+    Route::get('/shop', 'ShopPage')->name('shop.page');
+    Route::post('/shop/filter', 'ShopFilter')->name('shop.filter');
 });
 
 
